@@ -197,7 +197,6 @@ header .nav-bar .nav-links .nav-link a:hover {
   align-items: center;
   flex-wrap: nowrap;
   height: 100vh;
-  width: 100%;
 }
 
 .hero .desc {
@@ -1285,13 +1284,14 @@ footer .footer-bottom p {
     width: 100%;
   }
 
-  .hero .desc .btn .contact {
+  .hero .desc .btns .contact-btn {
     font-size: 20px;
   }
 
-  .hero .desc .btn .browse {
+  .hero .desc .btns .browse {
     font-size: 20px;
   }
+
 
   .about .parent .img {
     display: none;
@@ -1300,8 +1300,9 @@ footer .footer-bottom p {
   .about .parent .content p {
     margin: 20px 10px;
     line-height: 30px;
-    padding-left: 15px;
-    font-size: 20px;
+    padding: 0 15px;
+    font-size: 18px;
+    width: 100%;
   }
 
 
@@ -1350,6 +1351,10 @@ footer .footer-bottom p {
     text-align: center;
   }
 
+  .container .section-title h3{
+    font-size: 50px;
+  }
+
   .skills .techs .tech {
     width: 130px;
     height: 180px;
@@ -1394,6 +1399,7 @@ footer .footer-bottom p {
 
   .contact .form-section .section-title h3 {
     text-align: center;
+    font-size: 50px;
   }
 
   /* .contact .info-section{
@@ -1420,9 +1426,13 @@ footer .footer-bottom p {
   }
 
   .contact {
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .contact .info-section {
+    width: 90%;
   }
 
   .contact .info-section .small-cercle {
@@ -1446,10 +1456,17 @@ footer .footer-bottom p {
     flex-direction: column;
   }
 
+  footer .footer-links .footer-link a{
+    font-size: 18px;
+  }
+
   footer .footer-links .footer-link {
     margin: 5px 0;
   }
 
+  footer .footer-bottom p{
+    font-size: 14px;
+  }
 }
 
 /* dark mode */
