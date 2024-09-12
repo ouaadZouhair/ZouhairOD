@@ -5,7 +5,6 @@ const toggleButtonMobile = document.getElementById('btn-troggle-mobile');
 const btns = [toggleButtonLaptop, toggleButtonMobile]
 
 const elsDarlmode = [...els, ...btns]
-console.log(elsDarlmode)
 
 // Function to toggle dark mode
 function toggleDarkMode() {

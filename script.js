@@ -10,6 +10,11 @@ const toggleButtonMobile = document.getElementById('btn-troggle-mobile');
 let overlay = document.querySelector('.overlay')
 let menu = document.querySelector('.nav-bar-mobile')
 const parentMobileLinks = document.getElementById('nav-mobile-links')
+const els = document.querySelectorAll('#dm')
+const toggleButtonLaptop = document.getElementById('btn-troggle-laptop');
+const btns = [toggleButtonLaptop, toggleButtonMobile]
+
+const elsDarlmode = [...els, ...btns]
 
 // 2) Storing my data 
 let techsData = [
@@ -164,10 +169,12 @@ const InfoData = [
 // 3) Create the Application
 class App {
     constructor() {
+        // Init
         this._renderMarkup(techsData, techParentEl, this._generateTechsMarkup)
         this._renderMarkup(projectData, projectParentEl, this._generateProjectMarkup)
         this._observeSections()
-        this._initTechCardHover();
+        this._initTechCardHover()
+        this._setModeOfBrowser()
 
         // Events
         btnOpenMenu.addEventListener('click', this.openMenu);
@@ -180,14 +187,21 @@ class App {
             console.log(navLink);
             this.closeMenu();  // `this` now correctly refers to the class instance
         });
-        
-        
+
         toggleButtonMobile.addEventListener('click', this.closeMenu)
 
         btnSeeMore.addEventListener('click', function () {
             projectParentEl.style.height = '100%'
             btnSeeMore.style.display = 'none';
         })
+
+        document.addEventListener('DOMContentLoaded', () => {
+            toggleButtonLaptop.addEventListener('click', this._toggleDarkMode);
+            toggleButtonMobile.addEventListener('click', this._toggleDarkMode);
+
+            // Set initial theme
+            this._setInitialTheme();
+        });
     }
 
     openMenu = function () {
@@ -241,7 +255,7 @@ class App {
 
     _observeSections = () => {
         const allSections = document.querySelectorAll('.section');
-        
+
         const revealSection = (entries, observer) => {
             const [entry] = entries;
             if (!entry.isIntersecting) return;
@@ -279,6 +293,41 @@ class App {
             });
         });
     };
+
+    _toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        elsDarlmode.forEach(el => el.classList.toggle('dark-mode'))
+
+
+        // Save user preference to localStorage
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+            toggleButtonLaptop.innerHTML = `<i class="fa-solid fa-sun"></i>`
+            toggleButtonMobile.innerHTML = `<i class="fa-solid fa-sun"></i>`
+
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+            toggleButtonLaptop.innerHTML = `<i class="fa-solid fa-moon"></i>`
+            toggleButtonMobile.innerHTML = `<i class="fa-solid fa-moon"></i>`
+        }
+    }
+
+    _setInitialTheme() {
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            elsDarlmode.forEach(el => el.classList.toggle('dark-mode'))
+            toggleButtonLaptop.innerHTML = `<i class="fa-solid fa-sun"></i>`
+            toggleButtonMobile.innerHTML = `<i class="fa-solid fa-sun"></i>`
+        }
+    }
+    
+    _setModeOfBrowser(){
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  
+            localStorage.setItem('darkMode', 'enabled');
+          }
+    }
+
 }
 
 // 4) Start the application
