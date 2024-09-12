@@ -12,6 +12,7 @@ const toggleButtonMobile = document.getElementById('btn-troggle-mobile');
 let overlay = document.querySelector('.overlay')
 let menu = document.querySelector('.nav-bar-mobile')
 const parentMobileLinks = document.getElementById('nav-mobile-links')
+
 // 2) Storing my data 
 let techsData = [
     {
@@ -66,7 +67,7 @@ let techsData = [
         srcImage: './assets/logo/mongoDB.png',
         name: 'MongoDB',
         porsentage: 85,
-        classColor: 'mongoDB', 
+        classColor: 'mongoDB',
     }
 ];
 
@@ -74,50 +75,63 @@ const projectData = [
     {
         projectName: 'Topico',
         techs: ['HTML', 'CSS', 'JavaScript'],
-        imageProject: "./assets/projectsImg/ecommerceProject.png",
-        type:'Front-end',
+        imageProject: "./assets/projectsImg/ecommerceProject.jpg",
+        imgLazy: "./assets/projectsImg/ecommerceProject-lazy.png",
+        type: 'Front-end',
         description: 'Ecommerce of tech store',
+        projectLien: 'https://ouaadzouhair.github.io/mapty-app/',
         API: ''
+
     },
     {
         projectName: 'Mapty',
         techs: ['HTML', 'CSS', 'JavaScript', 'leafletJs'],
-        imageProject: './assets/projectsImg/Mapty.png',
+        imageProject: './assets/projectsImg/Mapty.jpg',
+        imgLazy: './assets/projectsImg/Mapty-lazy.png',
         type: 'Front-end',
         description: 'Localition sport activities',
-        API: ''
+        API: '',
+        projectLien: 'https://ouaadzouhair.github.io/mapty-app/'
     },
     {
         projectName: 'Farkify',
         techs: ['HTML', 'CSS', 'JavaScript'],
-        imageProject: './assets/projectsImg/forkify.png',
-        type:'Front-end',
+        imageProject: './assets/projectsImg/forkify.jpg',
+        imgLazy: './assets/projectsImg/forkify-lazy.png',
+        type: 'Front-end',
         description: 'Recipe search',
+        projectLien: 'https://ouaadzouhair.github.io/mapty-app/',
         API: 'https://forkify-api.herokuapp.com/v2'
     },
     {
         projectName: 'Backist',
         techs: ['HTML', 'CSS', 'JavaScript'],
-        imageProject:'./assets/projectsImg/bankist.png',
-        type:'Front-end',
+        imageProject: './assets/projectsImg/bankist.jpg',
+        imgLazy: './assets/projectsImg/bankist-lazy.png',
+        type: 'Front-end',
+        projectLien: 'https://ouaadzouhair.github.io/bankist-landing-page/',
         description: 'Landing page bank application',
         API: ''
     },
     {
         projectName: 'Backist Dashboard',
         techs: ['HTML', 'CSS', 'JavaScript'],
-        imageProject:'./assets/projectsImg/bankistDashbord.png',
-        type:'Front-end',
+        imageProject: './assets/projectsImg/bankistDashbord.jpg',
+        imgLazy: './assets/projectsImg/bankistDashbord-lazy.png',
+        type: 'Front-end',
+        projectLien: 'https://ouaadzouhair.github.io/mapty-app/',
         description: 'Client Dashboard bank application',
         API: ''
     },
     {
         projectName: 'Dice Game',
         techs: ['HTML', 'CSS', 'JavaScript'],
-        imageProject:'./assets/projectsImg/diceGame.png',
-        type:'Front-end',
+        imageProject: './assets/projectsImg/diceGame.jpg',
+        imgLazy: './assets/projectsImg/diceGame-lazy.png',
+        type: 'Front-end',
+        projectLien: 'https://ouaadzouhair.github.io/mapty-app/',
         description: 'Dice game',
-        API: ''
+        API: '',
     }
 ]
 
@@ -164,10 +178,11 @@ const generateTechsMarkup = function (data) {
 
 // 4) Render it in parent div in html
 const renderMarkup = function (data, ParentEl, generateMarkup) {
-   data.forEach(d => {
-    const markup = generateMarkup(d)
-    ParentEl.insertAdjacentHTML('beforeend', markup)
-   })
+    data.forEach(d => {
+        const markup = generateMarkup(d)
+        ParentEl.insertAdjacentHTML('beforeend', markup)
+        // console.log(markup)
+    })
 }
 
 // 5) Run renderMarkup function
@@ -201,52 +216,73 @@ techCards.forEach(card => {
 
 // ------ Rendering project markup
 
-const generateProjectMarkup = function (data){
+const generateProjectMarkup = function (data) {
     return `
-         <div class="project">
-                <div class="project-content">
+         <div class="project ">
+                <div class="project-content ">
                     <ul class="project-info">
                         <li><span>Project name</span> <i class="fa-solid fa-caret-right"></i> ${data.projectName}</li>
                         <li><span>Technologies</span> <i class="fa-solid fa-caret-right"></i> ${data.techs.map(tech => tech).join(', ')}</li>
                         <li><span>Type</span> <i class="fa-solid fa-caret-right"></i> ${data.type}</li>
-                        <li><span>Project description</span> <i class="fa-solid fa-caret-right"></i> ${data.description}</li>   
-                        ${data.API ? `<li><span>API</span> <i class="fa-solid fa-caret-right"></i> <a href="${data.API}"> ${data.API}</a></li>`: ''}
+                        ${data.API ? `<li><span>API</span> <i class="fa-solid fa-caret-right"></i> <a href="${data.API}"> ${data.API}</a></li>` : ''}
                     </ul>
+                    <a class="btn-view" href=${data.projectLien}><i class="fa-solid fa-eye"></i></a>
                 </div>
-                <img src=${data.imageProject} alt=${data.decripttion}>
+                <img id="img" src=${data.imageProject} data-src=${data.imageProject} alt=${data.decripttion}>
             </div>
-
     `
 }
 
-// const generateExpreMarkup = (data) =>{
-//     return `
-//         <div class="con">
-//             <h2>${data.year}</h2>
-//             <p>${data.description}</p>
-//          </div>
-//     `
-// }
-
 
 renderMarkup(projectData, projectParentEl, generateProjectMarkup)
-// renderMarkup(InfoData, expParentEl, generateExpreMarkup)
 
 
 
-btnSeeMore.addEventListener('click', function(){
+// const imgTargets = document.querySelectorAll('.lazy-img'); // Use class selector for multiple images
+
+// const loadImg = function (entries, observer) {
+//     const [entry] = entries;
+
+//     // If the image is not in the viewport, return early
+//     if (!entry.isIntersecting) return;
+
+//     console.log('Loading image:', entry.target.dataset.src, entry.target.src);
+
+//     // Replace src with data-src
+//     entry.target.src = entry.target.dataset.src;
+
+//     entry.target.addEventListener('load', function () {
+//         // Remove lazy-img class once the image is loaded
+//         entry.target.classList.remove('lazy-img');
+//     });
+
+//     // Stop observing the image once it's loaded
+//     observer.unobserve(entry.target);
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg, {
+//     root: null,
+//     threshold: 0.2, // Trigger when the image starts to enter the viewport
+// });
+
+// // Observe each image target
+// imgTargets.forEach(img => imgObserver.observe(img));
+
+
+
+btnSeeMore.addEventListener('click', function () {
     projectParentEl.style.height = '100%'
     btnSeeMore.style.display = 'none';
 })
 
 
-const openMenu = function (){
+const openMenu = function () {
     menu.style.left = '0';
     overlay.style.width = '100vw';
 }
 
 
-const closeMenu = function (){
+const closeMenu = function () {
     menu.style.left = '-450px';
     overlay.style.width = 0;
 }
@@ -257,11 +293,32 @@ overlay.addEventListener('click', closeMenu)
 
 console.log(parentMobileLinks)
 
-parentMobileLinks.addEventListener('click', function(e){
+parentMobileLinks.addEventListener('click', function (e) {
     const navLink = e.target.closest('.nav-link')
-    if(!navLink) return;
+    if (!navLink) return;
     closeMenu();
     console.log(navLink)
 })
 
 toggleButtonMobile.addEventListener('click', closeMenu)
+
+const allSections = document.querySelectorAll('.section');
+
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.30,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});

@@ -64,6 +64,14 @@ p {
   margin: 0 auto;
 
 }
+.section{
+  transition: transform 1s, opacity 1s;
+}
+
+.section--hidden {
+  opacity: 0;
+  transform: translateY(8rem);
+}
 
 /* @media (max-width: 1550px) {
     .container {
@@ -795,7 +803,7 @@ header .nav-bar-mobile .nav-btns .btn-troggle-dm:hover {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  height: 589px;
+  height: 640px;
   overflow: hidden;
   transition: all 5s ease;
 }
@@ -803,7 +811,7 @@ header .nav-bar-mobile .nav-btns .btn-troggle-dm:hover {
 .proj .projects .project {
   position: relative;
   width: 48%;
-  height: 270px;
+  height: 300px;
   border: 2px solid var(--border-color);
   border-radius: 20px;
   overflow: hidden;
@@ -823,10 +831,16 @@ header .nav-bar-mobile .nav-btns .btn-troggle-dm:hover {
   top: 0;
 }
 
+.lazy-img {
+    filter: blur(10px);
+}
+
 .proj .projects .project .project-content {
   position: absolute;
   opacity: 0;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -835,6 +849,25 @@ header .nav-bar-mobile .nav-btns .btn-troggle-dm:hover {
   transition: opacity 0.3s ease;
 }
 
+.proj .projects .project .project-content .btn-view{
+  text-align: center;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  padding: 10px;
+  color: var(--dark-color);
+  background-color: var(--btn-grey-color);
+  font-size: 20px;
+  box-shadow: 11px 10px 11px -6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+
+.proj .projects .project .project-content .btn-view:hover{
+  background-color: var(--main-color);
+  color: var(--light-color);
+}
 .proj .projects .project .project-content:hover {
   opacity: 1;
 
@@ -842,6 +875,7 @@ header .nav-bar-mobile .nav-btns .btn-troggle-dm:hover {
 
 .proj .projects .project .project-content .project-info {
   margin-left: 15px;
+  align-self: flex-start;
 }
 
 .proj .projects .project .project-content .project-info li {
@@ -1264,8 +1298,8 @@ footer .footer-bottom p {
   }
 
   .hero .img .cover img {
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
   }
 
   .hero .desc .title {
@@ -1303,6 +1337,9 @@ footer .footer-bottom p {
     width: 100%;
   }
 
+  .about .parent .content{
+    padding-left: 15px; 
+  }
 
   .proj .section-description p {
     font-size: 18px;
