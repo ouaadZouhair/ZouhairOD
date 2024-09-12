@@ -1,5 +1,3 @@
-// ------- Rendering My the thechnoligies 
-
 // 1) selecting my elements
 const pers = document.querySelectorAll('.pers')
 const techParentEl = document.querySelector('.techs')
@@ -163,162 +161,125 @@ const InfoData = [
     },
 ]
 
-// 3) generate technologie markup 
-const generateTechsMarkup = function (data) {
-    return `
-        <div class="tech cart">
-                <div class="logo">
-                    <img src=${data.srcImage} alt="html logo" > 
-                    <div class="pers ${data.classColor} hidden">${data.porsentage}%</div>
+// 3) Create the Application
+class App {
+    constructor() {
+        this._renderMarkup(techsData, techParentEl, this._generateTechsMarkup)
+        this._renderMarkup(projectData, projectParentEl, this._generateProjectMarkup)
+        this._observeSections()
+        this._initTechCardHover();
+
+        // Events
+        btnOpenMenu.addEventListener('click', this.openMenu);
+        btnCloseMenu.addEventListener('click', this.closeMenu);
+        overlay.addEventListener('click', this.closeMenu)
+
+        parentMobileLinks.addEventListener('click', (e) => {
+            const navLink = e.target.closest('.nav-link');
+            if (!navLink) return;
+            console.log(navLink);
+            this.closeMenu();  // `this` now correctly refers to the class instance
+        });
+        
+        
+        toggleButtonMobile.addEventListener('click', this.closeMenu)
+
+        btnSeeMore.addEventListener('click', function () {
+            projectParentEl.style.height = '100%'
+            btnSeeMore.style.display = 'none';
+        })
+    }
+
+    openMenu = function () {
+        menu.style.left = '0';
+        overlay.style.width = '100vw';
+    }
+
+
+    closeMenu = function () {
+        menu.style.left = '-450px';
+        overlay.style.width = 0;
+    }
+
+
+    _renderMarkup = function (objData, ParentEl, generateMarkup) {
+        objData.forEach(data => {
+            const markup = generateMarkup(data)
+            ParentEl.insertAdjacentHTML('beforeend', markup)
+            // console.log(markup)
+        })
+    }
+
+    _generateTechsMarkup = function (data) {
+        return `
+            <div class="tech cart">
+                    <div class="logo">
+                        <img src=${data.srcImage} alt="html logo" > 
+                        <div class="pers ${data.classColor} hidden">${data.porsentage}%</div>
+                    </div>
+                    <h3 class="tech-name" id="dm">${data.name}</h3>
+                </div> 
+        `
+    }
+
+    _generateProjectMarkup = function (data) {
+        return `
+             <div class="project ">
+                    <div class="project-content ">
+                        <ul class="project-info">
+                            <li><span>Project name</span> <i class="fa-solid fa-caret-right"></i> ${data.projectName}</li>
+                            <li><span>Technologies</span> <i class="fa-solid fa-caret-right"></i> ${data.techs.map(tech => tech).join(', ')}</li>
+                            <li><span>Type</span> <i class="fa-solid fa-caret-right"></i> ${data.type}</li>
+                            ${data.API ? `<li><span>API</span> <i class="fa-solid fa-caret-right"></i> <a href="${data.API}"> ${data.API}</a></li>` : ''}
+                        </ul>
+                        <a class="btn-view" href=${data.projectLien}><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <img id="img" src=${data.imageProject} data-src=${data.imageProject} alt=${data.decripttion}>
                 </div>
-                <h3 class="tech-name" id="dm">${data.name}</h3>
-            </div> 
-    `
+        `
+    }
+
+    _observeSections = () => {
+        const allSections = document.querySelectorAll('.section');
+        
+        const revealSection = (entries, observer) => {
+            const [entry] = entries;
+            if (!entry.isIntersecting) return;
+            entry.target.classList.remove('section--hidden');
+            observer.unobserve(entry.target);
+        };
+
+        const sectionObserver = new IntersectionObserver(revealSection, {
+            root: null,
+            threshold: 0.30,
+        });
+
+        allSections.forEach((section) => {
+            sectionObserver.observe(section);
+            section.classList.add('section--hidden');
+        });
+    };
+
+    _initTechCardHover = () => {
+        const techCards = document.querySelectorAll('.tech.cart');
+
+        techCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const persElement = card.querySelector('[class*="pers"]');
+                if (persElement) {
+                    persElement.classList.remove('hidden');
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                const persElement = card.querySelector('[class*="pers"]');
+                if (persElement) {
+                    persElement.classList.add('hidden');
+                }
+            });
+        });
+    };
 }
 
-// 4) Render it in parent div in html
-const renderMarkup = function (data, ParentEl, generateMarkup) {
-    data.forEach(d => {
-        const markup = generateMarkup(d)
-        ParentEl.insertAdjacentHTML('beforeend', markup)
-        // console.log(markup)
-    })
-}
-
-// 5) Run renderMarkup function
-renderMarkup(techsData, techParentEl, generateTechsMarkup)
-
-
-// ------- make show and hidden porsentage of technologies
-
-// 1) Select all elements with the class "tech cart"
-const techCards = document.querySelectorAll('.tech.cart');
-
-// 2) Add event listeners for mouseenter and mouseleave
-techCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        // 1) Find the element with a class that includes "pers" within this card
-        const persElement = card.querySelector('[class*="pers"]');
-        if (persElement) {
-            persElement.classList.remove('hidden');
-        }
-
-    });
-
-    card.addEventListener('mouseleave', () => {
-        // 2) Find the element with a class that includes "pers" within this card
-        const persElement = card.querySelector('[class*="pers"]');
-        if (persElement) {
-            persElement.classList.add('hidden');
-        }
-    });
-});
-
-// ------ Rendering project markup
-
-const generateProjectMarkup = function (data) {
-    return `
-         <div class="project ">
-                <div class="project-content ">
-                    <ul class="project-info">
-                        <li><span>Project name</span> <i class="fa-solid fa-caret-right"></i> ${data.projectName}</li>
-                        <li><span>Technologies</span> <i class="fa-solid fa-caret-right"></i> ${data.techs.map(tech => tech).join(', ')}</li>
-                        <li><span>Type</span> <i class="fa-solid fa-caret-right"></i> ${data.type}</li>
-                        ${data.API ? `<li><span>API</span> <i class="fa-solid fa-caret-right"></i> <a href="${data.API}"> ${data.API}</a></li>` : ''}
-                    </ul>
-                    <a class="btn-view" href=${data.projectLien}><i class="fa-solid fa-eye"></i></a>
-                </div>
-                <img id="img" src=${data.imageProject} data-src=${data.imageProject} alt=${data.decripttion}>
-            </div>
-    `
-}
-
-
-renderMarkup(projectData, projectParentEl, generateProjectMarkup)
-
-
-
-// const imgTargets = document.querySelectorAll('.lazy-img'); // Use class selector for multiple images
-
-// const loadImg = function (entries, observer) {
-//     const [entry] = entries;
-
-//     // If the image is not in the viewport, return early
-//     if (!entry.isIntersecting) return;
-
-//     console.log('Loading image:', entry.target.dataset.src, entry.target.src);
-
-//     // Replace src with data-src
-//     entry.target.src = entry.target.dataset.src;
-
-//     entry.target.addEventListener('load', function () {
-//         // Remove lazy-img class once the image is loaded
-//         entry.target.classList.remove('lazy-img');
-//     });
-
-//     // Stop observing the image once it's loaded
-//     observer.unobserve(entry.target);
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg, {
-//     root: null,
-//     threshold: 0.2, // Trigger when the image starts to enter the viewport
-// });
-
-// // Observe each image target
-// imgTargets.forEach(img => imgObserver.observe(img));
-
-
-
-btnSeeMore.addEventListener('click', function () {
-    projectParentEl.style.height = '100%'
-    btnSeeMore.style.display = 'none';
-})
-
-
-const openMenu = function () {
-    menu.style.left = '0';
-    overlay.style.width = '100vw';
-}
-
-
-const closeMenu = function () {
-    menu.style.left = '-450px';
-    overlay.style.width = 0;
-}
-
-btnOpenMenu.addEventListener('click', openMenu);
-btnCloseMenu.addEventListener('click', closeMenu);
-overlay.addEventListener('click', closeMenu)
-
-console.log(parentMobileLinks)
-
-parentMobileLinks.addEventListener('click', function (e) {
-    const navLink = e.target.closest('.nav-link')
-    if (!navLink) return;
-    closeMenu();
-    console.log(navLink)
-})
-
-toggleButtonMobile.addEventListener('click', closeMenu)
-
-const allSections = document.querySelectorAll('.section');
-
-const revealSection = function (entries, observer) {
-  const [entry] = entries;
-
-  if (!entry.isIntersecting) return;
-
-  entry.target.classList.remove('section--hidden');
-  observer.unobserve(entry.target);
-};
-
-const sectionObserver = new IntersectionObserver(revealSection, {
-  root: null,
-  threshold: 0.30,
-});
-
-allSections.forEach(function (section) {
-  sectionObserver.observe(section);
-  section.classList.add('section--hidden');
-});
+// 4) Start the application
+const app = new App()
