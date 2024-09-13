@@ -201,10 +201,11 @@ header .nav-bar .nav-links .nav-link a:hover {
 
 .hero {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
   height: 100vh;
+  /* width: 100%; */
 }
 
 .hero .desc {
@@ -274,7 +275,7 @@ header .nav-bar .nav-links .nav-link a:hover {
 .hero .img .cover {
   border: 2px solid var(--main-color);
   border-radius: 50%;
-  padding: 30px;
+  padding: 25px;
 }
 
 .hero .img .cover img {
@@ -413,10 +414,6 @@ header .nav-bar-mobile .nav-btns .btn-troggle-dm:hover {
 }
 
 /* About section */
-/* 
-.about{
-   
-} */
 
 .container .section-title {
   margin: 10px 0;
@@ -441,6 +438,7 @@ header .nav-bar-mobile .nav-btns .btn-troggle-dm:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .about .parent .img {
@@ -704,6 +702,7 @@ header .nav-bar-mobile .nav-btns .btn-troggle-dm:hover {
   align-items: center;
   flex-wrap: wrap;
   gap: 15px;
+  width: 100%;
 }
 
 .skills .techs .tech {
@@ -797,6 +796,7 @@ header .nav-bar-mobile .nav-btns .btn-troggle-dm:hover {
   justify-content: space-around;
   flex-wrap: wrap;
   height: 640px;
+  width: 100%;
   overflow: hidden;
   transition: all 5s ease;
 }
@@ -822,10 +822,6 @@ header .nav-bar-mobile .nav-btns .btn-troggle-dm:hover {
   align-items: center;
   z-index: -100;
   top: 0;
-}
-
-.lazy-img {
-    filter: blur(10px);
 }
 
 .proj .projects .project .project-content {
@@ -1108,15 +1104,8 @@ footer {
   background-color: var(--main-color);
   position: relative;
   padding: 10px 0;
-  /* z-index: 100; */
+  width: 100%;
 }
-/* 
-svg{
-  position: relative;
-  bottom: -300;
-  z-index: -100; 
-  margin: ;
-} */
 
 footer .logo h3 {
   font-size: 35px;
