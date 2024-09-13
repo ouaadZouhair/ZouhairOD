@@ -16,10 +16,12 @@ function toggleDarkMode() {
     if (document.body.classList.contains('dark-mode')) {
         localStorage.setItem('darkMode', 'enabled');
         toggleButtonLaptop.innerHTML = `<i class="fa-solid fa-sun"></i>`
+        toggleButtonMobile.innerHTML = `<i class="fa-solid fa-sun"></i>`
 
     } else {
         localStorage.setItem('darkMode', 'disabled');
         toggleButtonLaptop.innerHTML = `<i class="fa-solid fa-moon"></i>`
+        toggleButtonMobile.innerHTML = `<i class="fa-solid fa-moon"></i>`
     }
 }
 
@@ -29,6 +31,7 @@ function setInitialTheme() {
         document.body.classList.add('dark-mode');
         elsDarlmode.forEach(el => el.classList.toggle('dark-mode'))
         toggleButtonLaptop.innerHTML = `<i class="fa-solid fa-sun"></i>`
+        toggleButtonMobile.innerHTML = `<i class="fa-solid fa-sun"></i>`
     }
 }
 

@@ -10,11 +10,8 @@ const toggleButtonMobile = document.getElementById('btn-troggle-mobile');
 let overlay = document.querySelector('.overlay')
 let menu = document.querySelector('.nav-bar-mobile')
 const parentMobileLinks = document.getElementById('nav-mobile-links')
-const els = document.querySelectorAll('#dm')
 const toggleButtonLaptop = document.getElementById('btn-troggle-laptop');
-const btns = [toggleButtonLaptop, toggleButtonMobile]
 
-const elsDarlmode = [...els, ...btns]
 
 // 2) Storing my data 
 let techsData = [
@@ -82,7 +79,7 @@ const projectData = [
         imgLazy: "./assets/projectsImg/ecommerceProject-lazy.png",
         type: 'Front-end',
         description: 'Ecommerce of tech store',
-        projectLien: 'https://ouaadzouhair.github.io/mapty-app/',
+        projectLien: 'https://ecotopico.netlify.app',
         API: ''
 
     },
@@ -112,17 +109,17 @@ const projectData = [
         imageProject: './assets/projectsImg/bankist.jpg',
         imgLazy: './assets/projectsImg/bankist-lazy.png',
         type: 'Front-end',
-        projectLien: 'https://ouaadzouhair.github.io/bankist-landing-page/',
+        projectLien: 'https://bankist10.netlify.app',
         description: 'Landing page bank application',
         API: ''
     },
     {
-        projectName: 'Backist Dashboard',
+        projectName: 'Backist Client Dashboard',
         techs: ['HTML', 'CSS', 'JavaScript'],
         imageProject: './assets/projectsImg/bankistDashbord.jpg',
         imgLazy: './assets/projectsImg/bankistDashbord-lazy.png',
         type: 'Front-end',
-        projectLien: 'https://ouaadzouhair.github.io/mapty-app/',
+        projectLien: 'https://backist-client.netlify.app',
         description: 'Client Dashboard bank application',
         API: ''
     },
@@ -132,7 +129,7 @@ const projectData = [
         imageProject: './assets/projectsImg/diceGame.jpg',
         imgLazy: './assets/projectsImg/diceGame-lazy.png',
         type: 'Front-end',
-        projectLien: 'https://ouaadzouhair.github.io/mapty-app/',
+        projectLien: 'https://gamedice10.netlify.app',
         description: 'Dice game',
         API: '',
     }
@@ -173,8 +170,6 @@ class App {
         this._renderMarkup(techsData, techParentEl, this._generateTechsMarkup)
         this._renderMarkup(projectData, projectParentEl, this._generateProjectMarkup)
         this._observeSections()
-        this._initTechCardHover()
-        this._setModeOfBrowser()
 
         // Events
         btnOpenMenu.addEventListener('click', this.openMenu);
@@ -184,7 +179,6 @@ class App {
         parentMobileLinks.addEventListener('click', (e) => {
             const navLink = e.target.closest('.nav-link');
             if (!navLink) return;
-            console.log(navLink);
             this.closeMenu();  // `this` now correctly refers to the class instance
         });
 
@@ -195,13 +189,6 @@ class App {
             btnSeeMore.style.display = 'none';
         })
 
-        document.addEventListener('DOMContentLoaded', () => {
-            toggleButtonLaptop.addEventListener('click', this._toggleDarkMode);
-            toggleButtonMobile.addEventListener('click', this._toggleDarkMode);
-
-            // Set initial theme
-            this._setInitialTheme();
-        });
     }
 
     openMenu = function () {
@@ -220,7 +207,6 @@ class App {
         objData.forEach(data => {
             const markup = generateMarkup(data)
             ParentEl.insertAdjacentHTML('beforeend', markup)
-            // console.log(markup)
         })
     }
 
@@ -229,7 +215,7 @@ class App {
             <div class="tech cart">
                     <div class="logo">
                         <img src=${data.srcImage} alt="html logo" > 
-                        <div class="pers ${data.classColor} hidden">${data.porsentage}%</div>
+                        <div class="pers ${data.classColor}">${data.porsentage}%</div>
                     </div>
                     <h3 class="tech-name" id="dm">${data.name}</h3>
                 </div> 
@@ -265,7 +251,7 @@ class App {
 
         const sectionObserver = new IntersectionObserver(revealSection, {
             root: null,
-            threshold: 0.30,
+            threshold: 0.15,
         });
 
         allSections.forEach((section) => {
@@ -273,60 +259,6 @@ class App {
             section.classList.add('section--hidden');
         });
     };
-
-    _initTechCardHover = () => {
-        const techCards = document.querySelectorAll('.tech.cart');
-
-        techCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                const persElement = card.querySelector('[class*="pers"]');
-                if (persElement) {
-                    persElement.classList.remove('hidden');
-                }
-            });
-
-            card.addEventListener('mouseleave', () => {
-                const persElement = card.querySelector('[class*="pers"]');
-                if (persElement) {
-                    persElement.classList.add('hidden');
-                }
-            });
-        });
-    };
-
-    _toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        elsDarlmode.forEach(el => el.classList.toggle('dark-mode'))
-
-
-        // Save user preference to localStorage
-        if (document.body.classList.contains('dark-mode')) {
-            localStorage.setItem('darkMode', 'enabled');
-            toggleButtonLaptop.innerHTML = `<i class="fa-solid fa-sun"></i>`
-            toggleButtonMobile.innerHTML = `<i class="fa-solid fa-sun"></i>`
-
-        } else {
-            localStorage.setItem('darkMode', 'disabled');
-            toggleButtonLaptop.innerHTML = `<i class="fa-solid fa-moon"></i>`
-            toggleButtonMobile.innerHTML = `<i class="fa-solid fa-moon"></i>`
-        }
-    }
-
-    _setInitialTheme() {
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            elsDarlmode.forEach(el => el.classList.toggle('dark-mode'))
-            toggleButtonLaptop.innerHTML = `<i class="fa-solid fa-sun"></i>`
-            toggleButtonMobile.innerHTML = `<i class="fa-solid fa-sun"></i>`
-        }
-    }
-    
-    _setModeOfBrowser(){
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  
-            localStorage.setItem('darkMode', 'enabled');
-          }
-    }
 
 }
 
