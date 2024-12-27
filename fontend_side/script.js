@@ -184,16 +184,10 @@ class App {
     constructor() {
         // Init
         this._renderMarkup(exAndEdu, exAndEduParent, this._generateExAndEduMarkup)
-        // this._renderMarkup(projectData, projectParentEl, this._generateProjectMarkup)
         this._renderProjects(projectData);
         this._renderMarkup(techsFrontEnd, techsFrontEndParentEl, this._generateTechsMarkup)
         this._renderMarkup(techsBackEnd, techsBackEndParentEl, this._generateTechsMarkup)
         // this._observeSections()
-
-        // Events
-        btnOpenMenu.addEventListener('click', this.openMenu);
-        btnCloseMenu.addEventListener('click', this.closeMenu);
-        // overlay.addEventListener('click', this.closeMenu)
 
         parentMobileLinks.addEventListener('click', (e) => {
             const navLink = e.target.closest('.nav-link');
@@ -206,17 +200,6 @@ class App {
 
     }
 
-
-    openMenu = function () {
-        menu.style.left = '0';
-        overlay.style.width = '100vw';
-    }
-
-
-    closeMenu = function () {
-        menu.style.left = '-450px';
-        overlay.style.width = 0;
-    }
 
 
     _renderMarkup = function (objData, ParentEl, generateMarkup) {
