@@ -188,13 +188,7 @@ class App {
         this._renderMarkup(techsFrontEnd, techsFrontEndParentEl, this._generateTechsMarkup)
         this._renderMarkup(techsBackEnd, techsBackEndParentEl, this._generateTechsMarkup)
         // this._observeSections()
-
-        parentMobileLinks.addEventListener('click', (e) => {
-            const navLink = e.target.closest('.nav-link');
-            if (!navLink) return;
-            this.closeMenu();  // `this` now correctly refers to the class instance
-        });
-
+        
         toggleButtonMobile.addEventListener('click', this.closeMenu)
         btnLoadMore.addEventListener('click', this._renderProjects.bind(this, projectData));
 
