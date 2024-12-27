@@ -1,0 +1,10 @@
+.dot-bg.hovered {
+  background-color: #ffc107; /* Amber color */
+  transform: scale(1.25);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.dot-inner.hovered {
+  background-color: #ff9800; /* Deep amber */
+  transition: background-color 0.2s;
+}

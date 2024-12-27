@@ -1,258 +1,372 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark" id="app">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="./assets/logo/logo.png">
     <title>ZouhairOD</title>
 </head>
 
-<body>
-    <header class="header" id="dm">
-        <nav class="nav-bar" id="dm">
-            <div class="logo">
+<body class='bg-slate-200 dark:bg-slate-950'>
+    <header>
+        <nav
+            class=" justify-around bg-white/10 backdrop-blur-2xl py-4 mx-auto items-center w-full fixed z-30 dark:bg-slate-950/10 dark:text-white hidden lg:flex">
+            <div>
                 <a href="#">
-                    <h3 id="dm">Zouhair<span>OD.</span></h3>
+                    <h3 class='text-3xl font-semibold font-mono lg:text-2xl'>Zouhair<span
+                            class="text-blue-600">OD.</span>
+                    </h3>
                 </a>
             </div>
-            <ul class="nav-links">
-                <li class="nav-link"><a id="dm" href="#home">Home</a></li>
-                <li class="nav-link"><a href="#about" id="dm">About</a></li>
-                <li class="nav-link"><a href="#projects" id="dm">Projects</a></li>
-                <li class="nav-link"><a href="#contact" id="dm">Contact</a></li>
+            <ul class="hidden lg:flex gap-16 text-lg font-bold text-black dark:text-white">
+                <li class="hover:text-blue-600 duration-200"><a href="#home">Home</a></li>
+                <li class="hover:text-blue-600 duration-200"><a href="#about">About</a></li>
+                <li class="hover:text-blue-600 duration-200"><a href="#projectSection">Projects</a></li>
+                <li class="hover:text-blue-600 duration-200"><a href="#contact">Contact</a></li>
             </ul>
 
-            <div class="nav-btns">
-                <a href="#contact" class="btn-contact" id="dm"><i class="fa-regular fa-comment"></i></a>
-                <button class="btn-troggle-dm" id="btn-troggle-laptop"><i class="fa-solid fa-moon"></i></button>
-            </div>
 
-            <div class="menu-nav-bar" id="dm">
+            <button
+                class="lg:flex justify-center items-center text-3xl text-black dark:text-white hover:text-blue-500 duration-1000"
+                id="btn-troggle-laptop"><i class="fa-solid fa-moon hover:text-blue-500 duration-1000"></i></button>
+
+
+            <div class="border-2 rounded-lg px-2 py-1 text-lg font-bold hover:bg-blue-500 duration-150 text-black border-black  dark:text-white dark:border-white hidden"
+                id="menuBtn">
                 <i class="fa-solid fa-bars"></i>
             </div>
         </nav>
-        <div class="overlay"></div>
-        <nav class="nav-bar-mobile" id="dm">
-            <div href="#" class="close-icon">
-                <i class="fa-regular fa-circle-xmark" id="dm"></i>
+        <!-- <div class="overlay"></div>
+        <nav class="nav-bar-mobile text-white z-40 bg-slate-950 fixed w-full h-screen hidden">
+            <div href="#" class="absolute right-3 top-4 text-2xl hover:text-blue-500 duration-100" id="close-menu">
+                <i class="fa-regular fa-circle-xmark"></i>
             </div>
-            <div class="logo">
+            <div class="text-3xl font-mono font-semibold text-center my-3">
                 <a href="#">
-                    <h3 id="dm">Zouhair<span>OD.</span></h3>
+                    <h3>Zouhair<span class="text-blue-500">OD.</span></h3>
                 </a>
             </div>
-            <ul class="nav-links" id="nav-mobile-links">
-                <li class="nav-link"><a class="active" id="dm" href="#home">Home</a></li>
-                <li class="nav-link"><a href="#about" id="dm">About</a></li>
-                <li class="nav-link"><a href="#projects" id="dm">Projects</a></li>
-                <li class="nav-link"><a href="#contact" id="dm">Contact</a></li>
+            <ul class="nav-links text-2xl flex flex-col gap-5 justify-center items-center py-5 font-semibold"
+                id="nav-mobile-links">
+                <li class="nav-link w-full text-center py-5 hover:bg-blue-500 duration-100"><a class="active"
+                        href="#home">Home</a></li>
+                <li class="nav-link w-full text-center py-5 hover:bg-blue-500 duration-100"><a href="#about">About</a>
+                </li>
+                <li class="nav-link w-full text-center py-5 hover:bg-blue-500 duration-100"><a
+                        href="#projects">Projects</a></li>
+                <li class="nav-link w-full text-center py-5 hover:bg-blue-500 duration-100"><a
+                        href="#contact">Contact</a></li>
             </ul>
+            <button class="w-full text-3xl text-center" id="btn-troggle-mobile"><i
+                    class="fa-solid fa-moon hover:text-blue-500 duration-150"></i></button>
 
-            <div class="nav-btns">
-                <a href="#contact" class="btn-contact" id="dm"><i class="fa-regular fa-comment"></i></a>
-                <button class="btn-troggle-dm" id="btn-troggle-mobile"><i class="fa-solid fa-moon"></i></button>
+        </nav> -->
+
+        <nav class="flex justify-center items-center p-1 bg-gradient-to-r from-blue-500 to-purple-500 w-full md:w-96 h-14 left-1/2 transform -translate-x-1/2 fixed rounded-full mt-2 z-50 lg:hidden">
+            <div class="bg-white/70 dark:dark:bg-black/70 rounded-full w-full h-full p-4 flex items-center justify-evenly">
+                <ul class="text-black dark:text-white w-full text-2xl flex justify-around">
+                    <li class="hover:text-blue-600 duration-200"><a href="#home"><i class="fa-solid fa-house"></i></a></li>
+                    <li class="hover:text-blue-600 duration-200"><a href="#about"><i class="fa-solid fa-user"></i></a></li>
+                    <li class="hover:text-blue-600 duration-200"><a href="#projectSection"><i class="fa-solid fa-laptop-code"></i></a></li>
+                    <li class="hover:text-blue-600 duration-200"><a href="#contact"><i class="fa-solid fa-phone"></i></a></li>
+                    <button class="text-black dark:text-white text-2xl text-center" id="btn-troggle-mobile"><i class="fa-solid fa-moon hover:text-blue-500 duration-150"></i></button>
+                </ul>
+
+                
             </div>
         </nav>
     </header>
 
-    <section class="container hero" id="home">
-        <div class="desc">
-            <h3 class="intro" id="dm">Hey, I'm Zouhair 👋🏼</h3>
-            <h2 class="title">Web Developer</h2>
-            <p class="para" id="dm">I'm a Web developer based in Morocco, I'll help you to build you a website for your
+    <section class="section container flex flex-col-reverse items-center justify-center lg:justify-around h-screen mx-auto pt-20 lg:px-20 lg:flex-row md:gap-6" id="home">
+        <div class="flex flex-col gap-4 md:gap-10 lg:gap-6 items-center lg:items-start">
+            <h3 class="text-xl md:text-2xl lg:text-xl font-mono dark:text-white">Hey, I'm Zouhair 👋🏼</h3>
+            <h2 class="text-blue-600 text-4xl font-bold font-mono dark:border-amber-400 md:text-6xl lg:text-7xl">Web
+                Developer</h2>
+            <p
+                class="text-sm text-center w-4/5 md:text-lg md:w-5/6 lg:text-justify text-gray-500 dark:text-gray-200 font-mono">
+                I'm a Web developer based in
+                Morocco, I'll help you
+                to build
+                you a website for your
                 buisness.</p>
-            <div class="btns">
-                <a class="contact-btn" href="#contact" id="dm">Contact me</a>
-                <a class="browse" href="./assets/My CV.pdf" id="dm">Download CV</a>
+            <div
+                class="flex lg:gap-4 items-center md:justify-center lg:justify-start gap-2 w-full flex-col md:flex-row">
+                <h1 class="font-semibold text-xl md:text-2xl text-gray-700 dark:text-white">Tech stack:</h1>
+                <div class="flex gap-3 items-center">
+                    <img src="./assets/logo/html.png" class="w-8 hover:scale-125 duration-150 cursor-pointer">
+                    <img src="./assets/logo/css.png" class="w-8 hover:scale-125 duration-150 cursor-pointer">
+                    <img src="./assets/logo/js.png" class="w-7 h-7 hover:scale-125 duration-150 cursor-pointer">
+                    <img src="./assets/logo/tailwind.png" class="w-8 hover:scale-125 duration-150 cursor-pointer">
+                    <img src="./assets/logo/reactjs.png" class="w-8 hover:scale-125 duration-150 cursor-pointer">
+                    <img src="./assets/logo/php.png" class="w-8 hover:scale-125 duration-150 cursor-pointer">
+                    <img src="./assets/logo/laravel.png" class="w-8 hover:scale-125 duration-150 cursor-pointer">
+                </div>
+            </div>
+            <div class="flex gap-7 justify-start items-center">
+                <a class="text-white font-semibold text-lg md:text-xl border-2 bg-blue-700 border-blue-700 rounded-lg px-3 py-2 hover:bg-blue-600 hover:border-blue-600 hover:text-white duration-150"
+                    href="#about">Get in touch <i class="fa-solid fa-arrow-pointer text-xl"></i></a>
+                <a class="text-white bg-amber-500 font-semibold text-lg md:text-xl border-2 border-amber-500 rounded-lg px-3 py-2 hover:bg-amber-500/90 hover:border-amber-500/85 duration-150"
+                    href="./assets/My CV.pdf">Save CV <i class="fa-regular fa-floppy-disk text-xl"></i></a>
             </div>
         </div>
         <div class="img">
-            <div class="cover">
-                <img class="pic" src="./assets/me3.jpg" alt="my picture">
+            <div class="border-2 border-blue-600 rounded-full w-64 h-64 mb-6 lg:mb-0 md:w-96 md:h-96">
+                <img class="rounded-full p-4 md:p-6 flex justify-center items-center" src="./assets/me3.jpg"
+                    alt="my picture">
             </div>
         </div>
     </section>
 
-    <section class="about section container" id="about">
+    <section class="section container mx-auto" id="about">
         <div class="section-title">
-            <h3 id="dm">About me<span>.</span></h3>
+            <h3 class="font-semibold text-center text-5xl py-10 lg:text-start md:text-6xl lg:pl-14 dark:text-white">
+                About me<span class="text-blue-600 text-8xl lg:text-9xl">.</span>
+            </h3>
         </div>
-        <div class="parent">
-            <div class="img">
-                <img src="./assets/Programmer2.jpg" alt="vector programmer">
-            </div>
-
-            <div class="content">
-                <p id="dm">Hi, I'm Zouhair Ouaad, a <span>Web Developer</span> with a strong background from <span>ISTA
-                        NTIC Hay
-                        Riad in Rabat </span>. I
-                    specialize in <span>front-end</span> technologies like <span>HTML, CSS, JavaScript and
-                        ReactJS</span>, as well as <span>back-end</span>
-                    development with <span>PHP, SQL and Laravel</span>. I'm passionate about <span>building responsive
-                        and
-                        dynamic websites</span>,
-                    and I'm always eager to learn and take on new challenges. <br> Check out my portfolio to see my
-                    work, and
-                    let's drive to the future!
-                </p>
-                <ul class="social-media--links">
+        <div class="flex flex-col-reverse justify-around gap-6 items-center lg:flex-row">
+            <div class="flex flex-col justify-center items-center">
+                <img src="./assets/1.webp" class="rounded-3xl w-80 lg:w-96 h-auto" alt="vector programmer">
+                <ul class="flex gap-10 text-3xl mt-5 dark:text-white">
                     <li class="social-media--link"><a
-                            href="https://www.linkedin.com/in/mohammed-zouhir-oua%C3%A2d-811844288/"><i id="dm"
-                                class="fa-brands fa-linkedin"></i></a></li>
-                    <li class="social-media--link"><a href="https://github.com/ouaadZouhair"><i id="dm"
-                                class="fa-brands fa-github"></i></a></li>
-                    <li class="social-media--link"><a href="https://www.instagram.com/zouhairouaad1/"><i id="dm"
-                                class="fa-brands fa-instagram"></i></a></li>
-                    <li class="social-media--link"><a href="#"><i class="fa-brands fa-twitter" id="dm"></i></a></li>
-
+                            href="https://www.linkedin.com/in/mohammed-zouhir-oua%C3%A2d-811844288/"><i
+                                class="fa-brands fa-linkedin hover:text-blue-600 hover:scale-125 duration-150"></i></a>
+                    </li>
+                    <li class="social-media--link"><a href="https://github.com/ouaadZouhair"><i
+                                class="fa-brands fa-github hover:text-blue-600 hover:scale-125 duration-150"></i></a>
+                    </li>
+                    <li class="social-media--link"><a href="https://www.instagram.com/zouhairouaad1/"><i
+                                class="fa-brands fa-instagram hover:text-blue-600 hover:scale-125 duration-150"></i></a>
+                    </li>
+                    <li class="social-media--link"><a href="#"><i
+                                class="fa-brands fa-twitter hover:text-blue-600 hover:scale-125 duration-150"></i></a>
+                    </li>
                 </ul>
             </div>
+
+            <div
+                class="border-l-8 dark:border-amber-400 border-blue-600 flex flex-col items-center w-full lg:w-auto bg-indigo-950 dark:bg-indigo-950/40 text-gray-200 rounded-l-lg shadow-lg font-mono">
+                <!-- Header Section -->
+                <div
+                    class="w-full p-4 bg-gray-800 text-sm lg:text-lg text-gray-300 flex flex-wrap items-center justify-between">
+                    <!-- Logo and File Name -->
+                    <div class="flex items-center">
+                        <img src="./assets/logo/js.png" class="w-5 lg:w-8 inline-block mr-2" alt="js logo">
+                        <h1 class="text-lg md:text-xl">script.js</h1>
+                    </div>
+                    <!-- Title -->
+                    <h1 class="text-lg md:text-xl text-lime-300"> // Intro </h1>
+                    <!-- Action Buttons -->
+                    <div class="flex flex-row-reverse gap-2 items-center justify-center">
+                        <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-red-600"></div>
+                        <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-yellow-600"></div>
+                        <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-green-600"></div>
+                    </div>
+                </div>
+
+                <!-- Code Block Section -->
+                <pre class="w-full text-gray-200 rounded-b-lg flex justify-start px-4 sm:px-6 lg:px-10 overflow-x-auto">
+                    <code class="text-sm sm:text-base md:text-lg">
+<span class="text-blue-500">const</span> introduction = {
+    name: <span class="text-orange-400">"Zouhair Ouaad"</span>,
+    role: <span class="text-orange-400">"Web Developer 💻"</span>,
+    education: <span class="text-orange-400">"ISTA NTIC Hay Riad in Rabat 📖"</span>,
+    skills: {
+        front-End: [<span class="text-orange-400">"HTML"</span>, <span class="text-orange-400">"CSS"</span>, <span class="text-orange-400">"JavaScript"</span>, <span class="text-orange-400">"ReactJS"</span>],
+        back-End: [<span class="text-orange-400">"PHP"</span>, <span class="text-orange-400">"SQL"</span>, <span class="text-orange-400">"Laravel"</span>],
+        },
+    passion: <span class="text-orange-400">"Building responsive and dynamic websites 🛠️"</span>,
+    favorite-drink: <span class="text-orange-400">"Coffee ☕"</span>,
+    message: <span class="text-orange-400">"Check out my portfolio and let's drive to the future! 🌟"</span>
+};
+                    </code>
+                </pre>
+            </div>
+
+    </section>
+
+    <section class="section container mx-auto">
+        <h3 class="font-light text-2xl md:text-3xl text-center my-10 font-mono dark:text-white">Tech stack</h3>
+        <div class=" flex flex-col items-center px-0 md:px-5 justify-center gap-4">
+
+            <div
+                class="w-full h-full mx-auto lg:w-full lg:h-full bg-indigo-950 dark:bg-indigo-950/40 border-l-8 rounded-l-lg border-blue-600 flex flex-col shadow-lg dark:border-amber-400">
+                <div class="w-full p-4 bg-gray-800 text-sm text-gray-300 flex justify-between items-center">
+                    <div class="flex items-center"><img src="assets/logo/css.png" class="w-5 lg:w-8 inline-block mr-2"
+                            alt="css logo">
+                        <h1 class="text-lg md:text-xl">style.css</h1>
+                    </div>
+                    <h1 class="text-lime-300 text-lg md:text-xl">// Front-end</h1>
+                    <div class="flex flex-row-reverse gap-2 items-center justify-center">
+                        <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-red-600"></div>
+                        <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-yellow-600"></div>
+                        <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-green-600"></div>
+                    </div>
+
+                </div>
+
+                <div class="flex flex-wrap gap-10 py-10 mx-5 justify-around items-center" id="techFront-end">
+
+                </div>
+            </div>
+
+            <div
+                class="w-full h-full mx-auto lg:w-full lg:h-full bg-indigo-950 dark:bg-indigo-950/40 border-l-8 rounded-l-lg border-blue-600 flex flex-col shadow-lg dark:border-amber-400">
+                <div class="w-full p-4 bg-gray-800 text-sm text-gray-300 flex justify-between items-center">
+                    <div class="flex items-center"><img src="assets/logo/php.png" class="w-6 lg:w-8 inline-block mr-2"
+                            alt="css logo">
+                        <h1 class="text-lg md:text-xl">index.php</h1>
+                    </div>
+                    <h1 class="text-lime-300 text-lg lg:text-xl">// Back-end</h1>
+                    <div class="flex flex-row-reverse gap-2 items-center justify-center">
+                        <div class="w-3 h-3 lg:w-4 lg:h-4 rounded-full bg-red-600"></div>
+                        <div class="w-3 h-3 lg:w-4 lg:h-4 rounded-full bg-yellow-600"></div>
+                        <div class="w-3 h-3 lg:w-4 lg:h-4 rounded-full bg-green-600"></div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-10 py-10 mx-5 justify-around items-center" id="techBack-end">
+
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="container section skills">
+    <section class="section container mx-auto">
         <div class="title-section">
-            <h3 id="dm">Skills</h3>
+            <h3 class="font-light text-2xl md:text-3xl text-center my-10 font-mono dark:text-white">Education &
+                Experience</h3>
         </div>
-        <div class="techs">
-            <!-- <div class="tech cart">
-                <div class="logo">
-                    <img src="./assets/logo/css.png" alt="html logo">
-                    <div class="pers css hidden">95%</div>
-                </div>
-                <h3 class="tech-name">CSS</h3>
-            </div> -->
+        <div class="flex flex-col items-center text-black py-8 px-2">
+
+            <div class="relative w-full max-w-4xl" id="exAndEdu">
+
+                <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-500"></div>
+
+            </div>
         </div>
+
+
     </section>
 
-    <section class="container section exper-certi">
-        <div class="title-section">
-            <h3 id="dm">Education & Experience</h3>
-        </div>
-        <div class="timeline">
-            <div class="info left">
-                <div class="con" id="dm">
-                    <h2 id="dm">2019 - 2020</h2>
-                    <p id="dm">Baccalauréat in Science at Lycée Lalla Nezha</p>
-                </div>
-            </div>
-            <div class="info right">
-                <div class="con" id="dm">
-                    <h2 id="dm">2022 - 2023</h2>
-                    <p id="dm">Specialized Technician Diploma in Digital Development Web Full-Stack at ISTA</p>
-                </div>
-            </div>
-            <div class="info left">
-                <div class="con" id="dm">
-                    <h2 id="dm">2023</h2>
-                    <p id="dm">Internship at IsyChaine company as a full-stack developer</p>
-                </div>
-            </div>
-            <div class="info right" >
-                <div class="con" id="dm">
-                    <h2 id="dm">2024</h2>
-                    <p id="dm">Certificate in Angular Framework at Orange Digital Center</p>
-                </div>
-            </div>
-            <div class="info left">
-                <div class="con" id="dm">
-                    <h2 id="dm">Now</h2>
-                    <p id="dm">Improving my skills in online courses and make some projects</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container section proj" id="projects">
+    <section class="section container section mx-auto" id="projectSection">
         <div class="section-title">
-            <h3 id="dm">Projects<span>.</span></h3>
+            <h3
+                class="font-semibold text-5xl text-center lg:text-start md:text-6xl py-10 pl-0 lg:pl-14 dark:text-white">
+                Projects<span class="text-9xl text-blue-600">.</span>
+            </h3>
         </div>
-        <div class="section-description">
-            <p id="dm">They are some my project to see more click to the button <span>See more</span> and drive deep</p>
-        </div>
-        <div class="projects">
-            <!-- <div class="project">
-                <div class="project-content">
-                    <ul class="project-info">
-                        <li><span>Project name</span> <i class="fa-solid fa-caret-right"></i> Farkify</li>
-                        <li><span>Technologies</span> <i class="fa-solid fa-caret-right"></i> HTML , CSS, JavaScript, leafleJs</li>
-                        <li><span>Type</span> <i class="fa-solid fa-caret-right"></i> Front-end</li>
-                        <li><span>Project description</span> <i class="fa-solid fa-caret-right"></i> Recipe search</li>
-                        <li><span>API</span> <i class="fa-solid fa-caret-right"></i> <a href="https://forkify-api.herokuapp.com/v2">https://forkify-api.herokuapp.com/v2</a></li>
-                    </ul>
-                </div>
-                <img src="./assets/projectsImg/ecommerceProject.png" alt="">
-            </div> -->
+        <div class="text-sm md:text-lg border-l-8 border-blue-600 pl-3 lg:pl-5 ml-5 dark:text-white">
+            <p>They are some my project to see more click to the button <span>See more</span> and drive deep</p>
         </div>
 
-        <div class="btn-see-more">
-            <button id="see-more">See more <i class="fa-solid fa-caret-down"></i></button>
+        <div class="flex flex-col gap-6 mt-6" id="projects">
+
         </div>
+
+        <div class=" flex justify-center items-center w-full">
+            <button
+                class="text-white text-sm md:text-lg border-none rounded-lg bg-amber-500 font-semibold px-2 py-2 mx-auto mt-4 hover:bg-amber-500/85 duration-150"
+                id="load-more">Load more <i class="fa-solid fa-caret-down"></i></button>
+        </div>
+
     </section>
 
-    <section class="contact section" id="contact" >
-        <div class="form-section">
-            <div class="section-title">
-                <h3 id="dm">Contact me<span>.</span></h3>
-                <p id="dm">Let's bring your vision to life and build the website you've always dreamed of. Whether you
-                    need a
-                    clear plan or guidance, I'm here to help. <br>Reach out, and let's start creating together!</p>
-            </div>
-            <form action="https://getform.io/f/bdryppdb" method="post" class="contact-form">
-                <input type="text" id="dm" name="fullname" id="fullnameInput" placeholder="Fullname" class="fullname"
+    <section class="section container flex flex-col justify-around items-center md:flex-row gap-5 mx-auto mb-10"
+        id="contact">
+        <div class="w-11/12 lg:w-2/4 flex flex-col gap-5">
+            <h3 class="font-semibold text-5xl md:text-6xl py-6 pl-0 lg:pl-14 text-center dark:text-white">
+                Contact me<span class="text-blue-600 text-9xl">.</span></h3>
+            <p class="text-sm md:text-lg border-l-8 border-blue-600 pl-3 lg:pl-5 text-justify dark:text-white">
+                Let's bring your
+                vision to life and build the website you've always dreamed of. Whether you
+                need a
+                clear plan or guidance, I'm here to help. <br>Reach out, and let's start creating together!</p>
+
+            <form action="https://getform.io/f/bdryppdb" method="post"
+                class="flex flex-col justify-center gap-6 ml-0 w-full lg:ml-7">
+                <input type="text" name="fullname" id="fullnameInput" placeholder="Full name"
+                    class="border-b-2 border-black p-2 text-lg bg-transparent dark:text-white dark:border-gray-300"
                     required>
-                <input type="email" id="dm" name="email" id="emailInput" placeholder="Email" class="email" required>
-                <textarea name="message" id="dm" cols="30" rows="1" placeholder="Message" class="message"
+                <input type="email" name="email" id="emailInput" placeholder="Email"
+                    class="border-b-2 border-black p-2 text-lg bg-transparent dark:text-white dark:border-gray-300 "
+                    required>
+                <input type="text" name="subject" id="sibjectInput" placeholder="Subject"
+                    class="border-b-2 border-black p-2 text-lg bg-transparent dark:text-white dark:border-gray-300"
+                    required>
+                <textarea name="message" cols="30" rows="1" placeholder="Message"
+                    class="border-b-2 border-black/70 p-2 text-lg bg-transparent dark:text-white dark:border-gray-300"
                     required></textarea>
-                <button type="submit" id="dm">Send</button>
+                <button type="submit"
+                    class="text-white font-semibold border-2 rounded-lg text-xl w-full py-2 mx-auto bg-green-600 border-none hover:bg-green-600/80 duration-150 ">Send</button>
             </form>
         </div>
 
-        <div class="info-section" id="dm">
-            <div class="small-cercle"></div>
-            <h3>Info</h3>
-            <ul>
-                <li><i class="fa-solid fa-envelope"></i> ouaadzouhair11@gmail.com</li>
-                <li><i class="fa-solid fa-phone"></i> +2127 16 48 63 81</li>
-                <li class="social-media"><i class="fa-solid fa-globe"></i>
-                    <a href="https://www.linkedin.com/in/mohammed-zouhir-oua%C3%A2d-811844288/"><i
-                            class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/ouaadZouhair"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.instagram.com/zouhairouaad1/"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <div class="flex flex-col items-center gap-5 mt-10">
+            <div
+                class="w-80 lg:w-full bg-indigo-950 dark:bg-indigo-950/40 rounded-l-lg overflow-hidden border-l-8 border-blue-600 dark:border-amber-400">
+                <div class="font-mono text-white flex justify-around items-center bg-gray-700 py-3">
+                    <span><img src="./assets/logo/reactjs.png" class="w-5 inline-block mr-2 text-sm lg:text-lg"
+                            alt="reactjs logo">info.jsx</span>
+                    <h3 class="text-sm lg:text-lg text-lime-400">//Info</h3>
+                    <div class="flex flex-row-reverse gap-2 items-center justify-center">
+                        <div class="h-3 w-3 lg:w-4 lg:h-4 rounded-full bg-red-600"></div>
+                        <div class="h-3 w-3 lg:w-4 lg:h-4 rounded-full bg-yellow-600"></div>
+                        <div class="h-3 w-3 lg:w-4 lg:h-4 rounded-full bg-green-600"></div>
+                    </div>
+
+                </div>
+
+                <div class="text-white py-5 lg:text-lg text-sm">
+                    <pre>
+                        <code>
+ <span class="text-blue-400">const</span> email = <span class="text-orange-400">"ouaadzouhair11@gmail.com"</span>;
+    
+ <span class="text-blue-400">const</span> phoneNum = <span class="text-orange-400">"+2127 16 48 63 81"</span>;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
+            <ul class="flex gap-10 text-3xl mt-5 dark:text-white">
+                <li class="social-media--link"><a
+                        href="https://www.linkedin.com/in/mohammed-zouhir-oua%C3%A2d-811844288/"><i
+                            class="fa-brands fa-linkedin hover:text-blue-600 hover:scale-125 duration-150"></i></a></li>
+                <li class="social-media--link"><a href="https://github.com/ouaadZouhair"><i
+                            class="fa-brands fa-github hover:text-blue-600 hover:scale-125 duration-150"></i></a></li>
+                <li class="social-media--link"><a href="https://www.instagram.com/zouhairouaad1/"><i
+                            class="fa-brands fa-instagram hover:text-blue-600 hover:scale-125 duration-150"></i></a>
                 </li>
+                <li class="social-media--link"><a href="#"><i
+                            class="fa-brands fa-twitter hover:text-blue-600 hover:scale-125 duration-150"></i></a></li>
             </ul>
         </div>
+
+
     </section>
 
-
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#1d4ed8" fill-opacity="1"
-            d="M0,96L60,85.3C120,75,240,53,360,74.7C480,96,600,160,720,176C840,192,960,160,1080,138.7C1200,117,1320,107,1380,101.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
-        </path>
-    </svg>  -->
-    <footer id="dm" >
+    <footer class="bg-blue-600 text-white flex flex-col justify-center items-center p-4 gap-4 dark:bg-blue-950 w-full">
         <div class="logo">
-            <a href="#">
-                <h3>Zouhair<span>OD.</span></h3>
+            <a href="#home">
+                <h3 class="text-3xl lg:text-4xl font-bold font-mono">Zouhair<span class="text-amber-400">OD.</span></h3>
             </a>
         </div>
-        <ul class="footer-links">
-            <li class="footer-link"><a href="#home">Home</a></li>
-            <li class="footer-link"><a href="#about">About</a></li>
-            <li class="footer-link"><a href="#projects">Project</a></li>
-            <li class="footer-link"><a href="#contact">Contact</a></li>
+        <ul
+            class="flex flex-col gap-5 lg:gap-10 text-xl lg:text-2xl font-semibold md:flex-row justify-center items-center">
+            <li class="hover:text-yellow-500 duration-150"><a href="#home">Home</a></li>
+            <li class="hover:text-yellow-500 duration-150"><a href="#about">About</a></li>
+            <li class="hover:text-yellow-500 duration-150"><a href="#projects">Project</a></li>
+            <li class="hover:text-yellow-500 duration-150"><a href="#contact">Contact</a></li>
         </ul>
 
-        <div class="footer-bottom">
+        <div class="font-light text-sm">
             <p>&copy; 2024 Zouhair Ouaad | All Rights Reserved</p>
         </div>
     </footer>
-    <script type="module" src="script.js"></script>
-    <script type="module" src="darkMode.js"></script>
+    <script type="module" src="fontend_side/script.js"></script>
+    <script type="module" src="fontend_side/darkMode.js"></script>
 </body>
 
 </html>
